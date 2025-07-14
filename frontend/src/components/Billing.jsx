@@ -1,7 +1,9 @@
 import bank5 from "../assets/bank5.svg";
 import appstore from "../assets/appstore.svg"
 import google from "../assets/google.svg"
+import { TEXT } from "../constants/textLinks";
 
+const {headingLine1,headingLine2,description}=TEXT.billing
 const Billing = () => {
   return (
      <section className="py-20">
@@ -16,13 +18,12 @@ const Billing = () => {
             </div>
             <div className="space-y-6">
               <h2 className="text-4xl font-bold">
-                Easily control your
+                {headingLine1}
                 <br />
-                billing & invoicing.
+                {headingLine2}
               </h2>
               <p className="text-slate-400 text-lg">
-                Elit enim sed massa etiam. Mauris eu adipiscing ultrices ametodio aenean neque. Fusce ipsum orci rhoncus
-                aliporttitor integer platea placerat.
+                {description}
               </p>
               <div className="flex items-center space-x-4">
                 <img src={appstore} alt="App Store" className="h-10" />

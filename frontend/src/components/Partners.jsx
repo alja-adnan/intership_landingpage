@@ -1,16 +1,21 @@
+import { partner } from "../constants/partnerLink";
+
 const Partners = () => {
   return (
-     <section className="py-12">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center items-center space-x-12 opacity-50">
-            <span className="text-2xl font-bold">airbnb</span>
-            <span className="text-2xl font-bold">binance</span>
-            <span className="text-2xl font-bold">coinbase</span>
-            <span className="text-2xl font-bold">dropbox</span>
-          </div>
+    <section className="py-12">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-wrap justify-center items-center gap-8 opacity-50">
+          {partner.map(({ name }, index) => (
+            <span key={index} className="text-2xl font-bold">
+              {name}
+            </span>
+          ))}
         </div>
-      </section>
+      </div>
+    </section>
   );
 };
 
 export default Partners;
+
+ 

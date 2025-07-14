@@ -1,32 +1,54 @@
-import { useState } from "react";
+import { useState } from 'react';
+import { CiMenuBurger } from 'react-icons/ci';
+import { NAV_LINKS } from '../constants/navLinks';  
 
-const Navbar = () => {
-    const[isOpen,setIsOpen]=useState(false)
+function Nav() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <nav  className="bg-slate-900 py-16">
-        <div className="h-16 items-center flex justify-between">
-      <div className="text-2xl font-bold text-white pl-4">HOOBANK</div>
-      <div className="hidden sm:block">
-        <a herf=""className="text-grey-100 text-lg px-4">HOME</a>
-        <a herf=""className="text-grey-100 text-lg px-4">About us</a>
-        <a herf=""className="text-grey-100 text-lg px-4">Contact us</a>
-        <a herf=""className="text-grey-100 text-lg px-4">Features</a>
-      </div>
+    <nav >
+      <div className="h-16 flex items-center justify-between">
+        {/* logo */}
+        <div className="text-3xl text-white font-bold px-4">HOOBank</div>
+
+        {/* desktop menu */}
+        <div className="hidden sm:flex">
+          {NAV_LINKS.map(({ label, href }) => (
+            <a
+              key={href}
+              href={href}
+              className="text-gray-100 text-lg px-4 hover:text-white"
+            >
+              {label}
+            </a>
+          ))}
+        </div>
+
+        {/* burger icon */}
         <button
-          className="sm:hidden text-white text-2xl"
           onClick={() => setIsOpen(!isOpen)}
+          className="sm:hidden px-5 text-3xl text-white"
         >
-          ☰
+          <CiMenuBurger />
         </button>
       </div>
-      <div className={`${isOpen ? "block" : "hidden"} sm:hidden space-y-2 p-3`}>
-        <a href=""className="text-grey-600 text-lg px-4 block">HOME</a>
-        <a href=""className="text-grey-600 text-lg px-4 block">About us</a>
-        <a href=""className="text-grey-600 text-lg px-4 block">Contact us</a>
-        <a href=""className="text-grey-600 text-lg px-4 block">Features</a>
+
+      {/* mobile menu */}
+      <div
+        className={`${isOpen ? 'block' : 'hidden'} sm:hidden bg-cyan-100 space-y-2 pb-3`}
+      >
+        {NAV_LINKS.map(({ label, href }) => (
+          <a
+            key={href}
+            href={href}
+            className="text-gray-600 text-lg px-4 block hover:text-cyan-800"
+          >
+            {label}
+          </a>
+        ))}
       </div>
     </nav>
   );
-};
+}
 
-export default Navbar;
+export default Nav;

@@ -1,7 +1,8 @@
 
 
 
-import { Star, Shield, TrendingUp } from "lucide-react";
+import { FEATURES } from "../constants/featuresLink";
+import { TEXT } from "../constants/textLinks";
 
 const FeatureCard = ({ Icon, title, description }) => (
   <div className="bg-slate-800 border border-slate-700 rounded-lg p-6 flex items-start space-x-4">
@@ -14,6 +15,7 @@ const FeatureCard = ({ Icon, title, description }) => (
     </div>
   </div>
 );
+const { headingLine1, headingLine2, description } = TEXT.features;
 
 const Features = () => {
   return (
@@ -22,11 +24,10 @@ const Features = () => {
         {/* Left Text */}
         <div className="space-y-6">
           <h2 className="text-4xl font-bold text-white">
-            You do the business, <br /> we'll handle the money.
+            {headingLine1} <br />{headingLine2}
           </h2>
           <p className="text-slate-400 text-lg">
-            With the right credit card, you can improve your financial life by building credit, earning rewards and
-            saving money. But with hundreds of credit cards on the market.
+            {description}
           </p>
           <button className="bg-teal-500 hover:bg-teal-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
             Get Started
@@ -34,22 +35,15 @@ const Features = () => {
         </div>
 
         {/* Right Features List */}
-        <div className="space-y-6">
-          <FeatureCard
-            Icon={Star}
-            title="Rewards"
-            description="The best credit cards offer some tantalizing combinations of promotions and prizes."
-          />
-          <FeatureCard
-            Icon={Shield}
-            title="100% Secured"
-            description="We take proactive steps to make sure your information and transactions are secure."
-          />
-          <FeatureCard
-            Icon={TrendingUp}
-            title="Balance Transfer"
-            description="A balance transfer credit card can save you a lot of money in interest charges."
-          />
+          <div className="space-y-6">
+          {FEATURES.map((item, index) => (
+            <FeatureCard
+              key={index}
+              Icon={item.icon}
+              title={item.title}
+              description={item.description}
+            />
+          ))}
         </div>
       </div>
     </section>
